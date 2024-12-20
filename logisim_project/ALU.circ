@@ -699,7 +699,7 @@
     </comp>
     <comp lib="0" loc="(370,120)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="A"/>
+      <a name="label" val="S"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(380,120)" name="Pin">
