@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="3.9.0" version="1.0">
-  This file is intended to be loaded by Logisim-evolution v3.9.0(https://github.com/logisim-evolution/).
+<project source="3.8.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v3.8.0(https://github.com/logisim-evolution/).
 
   <lib desc="#Wiring" name="0">
     <tool name="Splitter">
@@ -112,7 +112,7 @@
       <circ-port dir="in" pin="210,280" x="80" y="190"/>
       <circ-port dir="in" pin="240,120" x="90" y="180"/>
       <circ-port dir="in" pin="240,210" x="150" y="180"/>
-      <circ-port dir="out" pin="350,120" x="170" y="190"/>
+      <circ-port dir="out" pin="380,120" x="170" y="190"/>
       <circ-port dir="out" pin="450,190" x="170" y="200"/>
     </appear>
     <comp lib="0" loc="(1020,1100)" name="Tunnel">
@@ -693,16 +693,21 @@
       <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(350,120)" name="Pin">
+    <comp lib="0" loc="(360,240)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="Z"/>
+    </comp>
+    <comp lib="0" loc="(370,120)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="A"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(380,120)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="facing" val="west"/>
       <a name="label" val="S"/>
       <a name="output" val="true"/>
       <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(360,240)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="Z"/>
     </comp>
     <comp lib="0" loc="(380,240)" name="Tunnel">
       <a name="facing" val="north"/>
@@ -1106,6 +1111,7 @@
     <wire from="(240,210)" to="(250,210)"/>
     <wire from="(360,170)" to="(360,240)"/>
     <wire from="(360,170)" to="(420,170)"/>
+    <wire from="(370,120)" to="(380,120)"/>
     <wire from="(380,180)" to="(380,240)"/>
     <wire from="(380,180)" to="(420,180)"/>
     <wire from="(400,190)" to="(400,240)"/>
