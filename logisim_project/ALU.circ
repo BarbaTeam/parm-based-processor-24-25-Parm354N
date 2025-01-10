@@ -102,15 +102,17 @@
     <appear>
       <path d="M116,198 Q120,208 124,198" fill="none" stroke="#808080" stroke-width="2"/>
       <polygon fill="none" points="70,180 100,180 120,200 140,180 170,180 130,220 110,220" stroke="#000000" stroke-width="2"/>
-      <text dominant-baseline="central" font-family="SansSerif" font-size="12" text-anchor="middle" x="122" y="214">ALU</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" text-anchor="middle" x="120" y="209">ALU</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="10" text-anchor="middle" x="90" y="185">A</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="10" text-anchor="middle" x="150" y="185">B</text>
       <circ-anchor facing="north" x="120" y="200"/>
       <circ-port dir="in" pin="180,320" x="100" y="210"/>
       <circ-port dir="in" pin="200,360" x="90" y="200"/>
       <circ-port dir="in" pin="210,280" x="80" y="190"/>
       <circ-port dir="in" pin="240,120" x="90" y="180"/>
       <circ-port dir="in" pin="240,210" x="150" y="180"/>
-      <circ-port dir="out" pin="380,120" x="170" y="190"/>
-      <circ-port dir="out" pin="450,190" x="170" y="200"/>
+      <circ-port dir="out" pin="380,120" x="120" y="220"/>
+      <circ-port dir="out" pin="450,190" x="150" y="200"/>
     </appear>
     <comp lib="0" loc="(1020,1100)" name="Tunnel">
       <a name="facing" val="east"/>
