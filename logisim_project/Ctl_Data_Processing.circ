@@ -399,7 +399,7 @@ end TCL_Generic;
       <a name="label" val="ALU_opcode"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="0" loc="(870,640)" name="Tunnel">
+    <comp lib="0" loc="(870,630)" name="Tunnel">
       <a name="label" val="Rn"/>
       <a name="width" val="3"/>
     </comp>
