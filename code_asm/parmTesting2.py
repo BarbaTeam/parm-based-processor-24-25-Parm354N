@@ -25,8 +25,8 @@ def assemble_instruction(instruction):
         "movs": "00100",
         "ands": "0100000000",
         "eors": "0100000001",
-        "adcs": "0100000010",
-        "sbcs": "0100000011",
+        "adcs": "0100000101",
+        "sbcs": "0100000110",
         "rors": "0100000111",
         "tst":  "0100001000",
         "rsbs": "0100001001",
@@ -124,6 +124,6 @@ def fullConvert(inputPathString, outPathString):
 
 
 
-fullConvert("C:\\Users\\Lohann\\Desktop\\test2.s", "C:\\Users\\Lohann\\Desktop\\testResultHexa2.txt")
+#fullConvert("C:\\Users\\Lohann\\Desktop\\parm\\13-16_instructions.s", "C:\\Users\\Lohann\\Desktop\\parm\\testRes13-16.txt")
 
 
