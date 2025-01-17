@@ -326,7 +326,7 @@
     </comp>
     <comp lib="0" loc="(1350,1430)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(1350,1560)" name="Tunnel">
@@ -341,7 +341,7 @@
     </comp>
     <comp lib="0" loc="(1350,1690)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(1350,1820)" name="Tunnel">
@@ -818,12 +818,12 @@
     </comp>
     <comp lib="0" loc="(640,1430)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(640,1560)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(640,1680)" name="Tunnel">
@@ -1580,7 +1580,7 @@
     </comp>
     <comp lib="0" loc="(180,70)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(240,290)" name="Constant">
@@ -1686,7 +1686,7 @@
     </comp>
     <comp lib="0" loc="(180,70)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(230,310)" name="Constant">
@@ -1771,7 +1771,7 @@
     </comp>
     <comp lib="0" loc="(180,70)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(230,310)" name="Constant">
@@ -2140,7 +2140,7 @@
     </comp>
     <comp lib="0" loc="(180,60)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="A"/>
+      <a name="label" val="B"/>
       <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(210,240)" name="Constant">
