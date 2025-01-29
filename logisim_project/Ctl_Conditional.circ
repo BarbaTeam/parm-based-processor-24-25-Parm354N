@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="3.9.0" version="1.0">
-  This file is intended to be loaded by Logisim-evolution v3.9.0(https://github.com/logisim-evolution/).
+<project source="3.8.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v3.8.0(https://github.com/logisim-evolution/).
 
   <lib desc="#Wiring" name="0">
     <tool name="Splitter">
@@ -179,7 +179,7 @@ end TCL_Generic;
       <circ-port dir="in" pin="210,150" x="50" y="60"/>
       <circ-port dir="in" pin="210,200" x="50" y="80"/>
       <circ-port dir="in" pin="230,450" x="50" y="160"/>
-      <circ-port dir="out" pin="1000,560" x="250" y="70"/>
+      <circ-port dir="out" pin="1000,560" x="250" y="80"/>
       <circ-port dir="out" pin="650,230" x="250" y="60"/>
     </appear>
     <comp lib="0" loc="(1000,560)" name="Pin">

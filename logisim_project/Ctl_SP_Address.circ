@@ -194,9 +194,10 @@ end type_architecture;
       <a name="appearance" val="classic"/>
       <a name="label" val="Enable"/>
     </comp>
-    <comp lib="0" loc="(580,240)" name="Bit Extender">
-      <a name="in_width" val="1"/>
-      <a name="out_width" val="32"/>
+    <comp lib="0" loc="(570,120)" name="Constant">
+      <a name="facing" val="south"/>
+      <a name="value" val="0x0"/>
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(640,140)" name="Pin">
       <a name="appearance" val="classic"/>
@@ -215,11 +216,10 @@ end type_architecture;
       <a name="facing" val="west"/>
       <a name="width" val="24"/>
     </comp>
-    <comp lib="1" loc="(630,140)" name="AND Gate">
-      <a name="size" val="30"/>
+    <comp lib="2" loc="(520,130)" name="Multiplexer">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="2" loc="(520,130)" name="Multiplexer">
+    <comp lib="2" loc="(630,140)" name="Multiplexer">
       <a name="width" val="32"/>
     </comp>
     <comp lib="3" loc="(390,100)" name="Adder">
@@ -253,14 +253,14 @@ end type_architecture;
     <wire from="(400,140)" to="(400,160)"/>
     <wire from="(400,140)" to="(490,140)"/>
     <wire from="(500,150)" to="(500,220)"/>
-    <wire from="(510,270)" to="(530,270)"/>
-    <wire from="(520,130)" to="(600,130)"/>
-    <wire from="(530,240)" to="(530,270)"/>
-    <wire from="(530,240)" to="(540,240)"/>
-    <wire from="(530,270)" to="(650,270)"/>
-    <wire from="(580,240)" to="(590,240)"/>
-    <wire from="(590,150)" to="(590,240)"/>
-    <wire from="(590,150)" to="(600,150)"/>
+    <wire from="(510,270)" to="(610,270)"/>
+    <wire from="(520,130)" to="(530,130)"/>
+    <wire from="(530,130)" to="(530,150)"/>
+    <wire from="(530,150)" to="(600,150)"/>
+    <wire from="(570,120)" to="(570,130)"/>
+    <wire from="(570,130)" to="(600,130)"/>
+    <wire from="(610,160)" to="(610,270)"/>
+    <wire from="(610,270)" to="(650,270)"/>
     <wire from="(630,140)" to="(640,140)"/>
     <wire from="(650,270)" to="(660,270)"/>
   </circuit>
