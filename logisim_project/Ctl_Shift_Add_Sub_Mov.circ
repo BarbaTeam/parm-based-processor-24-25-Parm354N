@@ -193,12 +193,12 @@ end TCL_Generic;
       <circ-port dir="in" pin="110,140" x="50" y="40"/>
       <circ-port dir="in" pin="720,120" x="50" y="60"/>
       <circ-port dir="out" pin="1300,1050" x="270" y="100"/>
-      <circ-port dir="out" pin="1300,1310" x="270" y="110"/>
-      <circ-port dir="out" pin="1300,1370" x="270" y="130"/>
-      <circ-port dir="out" pin="1300,1430" x="270" y="140"/>
+      <circ-port dir="out" pin="1300,1310" x="270" y="140"/>
+      <circ-port dir="out" pin="1300,1370" x="270" y="160"/>
+      <circ-port dir="out" pin="1300,1430" x="270" y="180"/>
       <circ-port dir="out" pin="1300,250" x="270" y="120"/>
       <circ-port dir="out" pin="1300,350" x="270" y="200"/>
-      <circ-port dir="out" pin="1300,510" x="270" y="160"/>
+      <circ-port dir="out" pin="1300,510" x="270" y="40"/>
       <circ-port dir="out" pin="1300,700" x="270" y="80"/>
       <circ-port dir="out" pin="1300,880" x="270" y="60"/>
     </appear>
