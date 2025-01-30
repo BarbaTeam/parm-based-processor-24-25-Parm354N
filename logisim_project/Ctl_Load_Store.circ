@@ -191,6 +191,10 @@ end type_architecture;
       <a name="output" val="true"/>
       <a name="width" val="3"/>
     </comp>
+    <comp lib="0" loc="(160,320)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Inst"/>
+    </comp>
     <comp lib="0" loc="(180,480)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="label" val="Clk"/>
@@ -345,10 +349,6 @@ end type_architecture;
     <comp lib="0" loc="(690,60)" name="Tunnel">
       <a name="label" val="E1"/>
     </comp>
-    <comp lib="0" loc="(80,450)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Inst"/>
-    </comp>
     <comp lib="0" loc="(880,230)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="imm8"/>
@@ -372,15 +372,14 @@ end type_architecture;
       <a name="size" val="30"/>
       <a name="width" val="3"/>
     </comp>
-    <comp lib="1" loc="(230,320)" name="NOT Gate">
+    <comp lib="1" loc="(240,320)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(240,440)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(240,530)" name="NOT Gate">
       <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(250,440)" name="AND Gate">
-      <a name="negate0" val="true"/>
-      <a name="size" val="30"/>
     </comp>
     <comp lib="1" loc="(280,520)" name="OR Gate">
       <a name="size" val="30"/>
@@ -407,7 +406,7 @@ end type_architecture;
       <a name="appearance" val="logisim_evolution"/>
       <a name="trigger" val="falling"/>
     </comp>
-    <comp lib="8" loc="(867,497)" name="Text">
+    <comp lib="8" loc="(865,495)" name="Text">
       <a name="font" val="SansSerif plain 12"/>
       <a name="text" val="Delay load and hold PC for 1 cycle for the RAM to send out requested data "/>
     </comp>
@@ -417,12 +416,10 @@ end type_architecture;
     <wire from="(1000,80)" to="(1030,80)"/>
     <wire from="(1060,210)" to="(1100,210)"/>
     <wire from="(1060,90)" to="(1100,90)"/>
-    <wire from="(130,320)" to="(130,450)"/>
-    <wire from="(130,320)" to="(210,320)"/>
-    <wire from="(130,450)" to="(220,450)"/>
-    <wire from="(180,400)" to="(180,430)"/>
+    <wire from="(160,320)" to="(220,320)"/>
+    <wire from="(180,400)" to="(180,440)"/>
     <wire from="(180,400)" to="(330,400)"/>
-    <wire from="(180,430)" to="(210,430)"/>
+    <wire from="(180,440)" to="(220,440)"/>
     <wire from="(180,480)" to="(260,480)"/>
     <wire from="(180,510)" to="(250,510)"/>
     <wire from="(200,70)" to="(220,70)"/>
@@ -432,10 +429,10 @@ end type_architecture;
     <wire from="(220,170)" to="(250,170)"/>
     <wire from="(220,70)" to="(220,120)"/>
     <wire from="(220,70)" to="(250,70)"/>
-    <wire from="(230,320)" to="(510,320)"/>
+    <wire from="(240,320)" to="(510,320)"/>
+    <wire from="(240,440)" to="(260,440)"/>
     <wire from="(240,530)" to="(250,530)"/>
     <wire from="(240,620)" to="(280,620)"/>
-    <wire from="(250,440)" to="(260,440)"/>
     <wire from="(270,130)" to="(280,130)"/>
     <wire from="(270,180)" to="(280,180)"/>
     <wire from="(280,520)" to="(290,520)"/>
@@ -471,7 +468,6 @@ end type_architecture;
     <wire from="(560,60)" to="(690,60)"/>
     <wire from="(640,110)" to="(690,110)"/>
     <wire from="(640,170)" to="(690,170)"/>
-    <wire from="(80,450)" to="(130,450)"/>
     <wire from="(880,230)" to="(940,230)"/>
     <wire from="(930,210)" to="(940,210)"/>
     <wire from="(970,100)" to="(1030,100)"/>
