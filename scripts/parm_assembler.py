@@ -1,70 +1,78 @@
-def file_convert(file_path): 
-    with open(file_path, 'r') as file: 
+import sys
+
+from pathlib import Path
+
+
+def file_convert(file_path):
+    with open(file_path, 'r') as file:
         lines =  file.readlines()
     n = len(lines)
-    str = ""
+    content = ""
     labelsDict = parsLabels(lines, n)
-    for lineIndex in range(n): 
-        if (lines[lineIndex][0] != '@' and len(lines[lineIndex][:-1]) > 0): 
-            str += (assemble_instruction(lines, lines[lineIndex][:-1], labelsDict, lineIndex) + " ")
-    return str
+    for lineIndex in range(n):
+        if (lines[lineIndex][0] != '@' and len(lines[lineIndex][:-1]) > 0):
+            content += (assemble_instruction(lines, lines[lineIndex][:-1], labelsDict, lineIndex) + " ")
+    return content
 
 
 def write_string_to_txt_file(string, file_name):
     with open(file_name, 'w') as file:
         file.write(string)
 
-def isLabel(line): 
-    if len(line) == 0: 
-        return False
-    if len(line) == 1: 
-        return line[-1] == ':'
-    else: 
-        return line[-1] == ':' or line[-2] == ':' or line[0] == '.'
-        
 
-def findLabel(textLines, string, labelsDict, stringIndex, immSize): 
+def isLabel(line):
+    if len(line) == 0:
+        return False
+    if len(line) == 1:
+        return line[-1] == ':'
+    else:
+        return line[-1] == ':' or line[-2] == ':' or line[0] == '.'
+
+
+def findLabel(textLines, string, labelsDict, stringIndex, immSize):
     add = 2**immSize
     counter = stringIndex - 1
-    for lineIndex in range(stringIndex, len(textLines)): 
+    for lineIndex in range(stringIndex, len(textLines)):
         counter += 1
-        if textLines[lineIndex][:-2] == string: 
+        if textLines[lineIndex][:-2] == string:
             val = counter - stringIndex - 3
-            if val < 0: 
+            if val < 0:
                 val = val + add
             return val
-        if textLines[lineIndex][:-2] in labelsDict: 
+        if textLines[lineIndex][:-2] in labelsDict:
             counter -= 1
     counter = 0
-    for lineIndex in range(0, stringIndex): 
-        if textLines[lineIndex][:-2] == string: 
+    for lineIndex in range(0, stringIndex):
+        if textLines[lineIndex][:-2] == string:
             counter = 0
-        if textLines[lineIndex][:-2] in labelsDict: 
+        if textLines[lineIndex][:-2] in labelsDict:
             counter -= 1
         counter += 1
-        
+
     val = -1 * counter - 3 + add
     return val
 
 
-        
-            
+
+
 def parsLabels(lineTable, length):
     labelDict = {}
     labelsFound = 0
-    for lineIndex in range(length): 
-        if isLabel(lineTable[lineIndex]): 
+    for lineIndex in range(length):
+        if isLabel(lineTable[lineIndex]):
             labelsFound += 1
             labelDict[lineTable[lineIndex][:-2]] = lineIndex - labelsFound
-    return labelDict 
+    return labelDict
 
-def convertLabelsToValue(fullText, labelDict, string, stringIndex, immSize = 8): 
+
+def convertLabelsToValue(fullText, labelDict, string, stringIndex, immSize = 8):
     #i want to return val, such that val + 3 = labelDict[string] - lineIndex
     #if val
-    if string in labelDict: 
+    if string in labelDict:
         return findLabel(fullText, string, labelDict, stringIndex, immSize)
-    else: 
+    else:
         return string
+
 
 def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
     # Define the instruction set and their binary opcodes
@@ -117,14 +125,14 @@ def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
 
     # Split the instruction into parts
     parts = instruction.split()
-    if (len(parts) < 1): 
+    if (len(parts) < 1):
         print("yo im right here man")
     instr = str.lower(parts[0])
     operands = []
-    if instr in ['b', 'bal', 'bnv']: 
+    if instr in ['b', 'bal', 'bnv']:
         operands.append(convertLabelsToValue(fullText, labelsDict, parts[1].split(',')[0], lineIndex, 11))
-    else: 
-        for i in range(1, len(parts)): 
+    else:
+        for i in range(1, len(parts)):
             operands.append(convertLabelsToValue(fullText, labelsDict, parts[i].split(',')[0], lineIndex, 8))
 
     # Initialize the binary code
@@ -135,13 +143,13 @@ def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
         binary_code = f"{instruction_set[instr]}{to_binary(rd, 3)}{to_binary(imm8, 8)}"
 
 
-    elif instr in ["lsls", "lsrs", "asrs"]: 
+    elif instr in ["lsls", "lsrs", "asrs"]:
         rd = intOrString(operands[0])
         rm = intOrString(operands[1])
-        if (len(operands) == 3): 
+        if (len(operands) == 3):
             imm5 = intOrString(operands[2])
             binary_code = f"{instruction_set[instr][0]}{to_binary(imm5, 5)}{to_binary(rm, 3)}{to_binary(rd, 3)}"
-        elif (len(operands) == 2): 
+        elif (len(operands) == 2):
             binary_code = f"{instruction_set[instr][1]}{to_binary(rm, 3)}{to_binary(rd, 3)}"
 
 
@@ -151,19 +159,19 @@ def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
         binary_code = f"{instruction_set[instr]}{to_binary(rm, 3)}{to_binary(rd, 3)}"
     elif instr in ['adds', 'subs']:
         rd, rn, rm = 0,0,0
-        if (len(operands) == 2): 
+        if (len(operands) == 2):
             #yaboifucked
             rd = intOrString(operands[0])
             immX = intOrString(operands[1])
             binary_code = f"{instruction_set[instr][0]}{to_binary(immX, 3)}{to_binary(rd, 3)}{to_binary(rd, 3)}"
 
-        else: 
-            if operands[2][0] == '#': 
+        else:
+            if operands[2][0] == '#':
                 rd = intOrString(operands[0])
                 rn = intOrString(operands[1])
                 imm3 = intOrString(operands[2])
                 binary_code = f"{instruction_set[instr][1]}{to_binary(imm3, 3)}{to_binary(rn, 3)}{to_binary(rd, 3)}"
-            else: 
+            else:
                 rd = intOrString(operands[0])
                 rn = intOrString(operands[1])
                 rm = intOrString(operands[2])
@@ -179,7 +187,7 @@ def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
     elif instr in ['beq', 'bne', 'bcs', 'bcc', 'bmi', 'bpl', 'bvs', 'bvc', 'bhi', 'bls', 'bge', 'blt', 'bgt', 'ble']:
         imm8 = intOrString(operands[0], 1)
         binary_code = f"{instruction_set[instr]}{to_binary(imm8, 8)}"
-    elif instr in ['b', 'bal', 'bnv']: 
+    elif instr in ['b', 'bal', 'bnv']:
         imm11 = intOrString(operands[0], 1)
         binary_code = f"{instruction_set[instr]}{to_binary(imm11, 11)}"
     else:
@@ -190,25 +198,44 @@ def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
     hex_code = f"{int(binary_code, 2):04x}"
     return hex_code
 
-def intOrString(operand, stringStart = 1, stringEnd = "NULL"): 
-    if isinstance(operand, str): 
-        if stringEnd == "NULL": 
+
+def intOrString(operand, stringStart = 1, stringEnd = "NULL"):
+    if isinstance(operand, str):
+        if stringEnd == "NULL":
             return int(operand[stringStart: ])
-        else: 
+        else:
             return int(operand[stringStart: stringEnd])
 
-    elif isinstance(operand, int): 
+    elif isinstance(operand, int):
         return operand
-    else: 
+    else:
         return "what on earth"
 
-def fullConvert(inputPathString, outPathString): 
+
+def fullConvert(inputPathString, outPathString):
     write_string_to_txt_file(file_convert(inputPathString), outPathString)
 
-#fullConvert("C:\\Users\\Lohann\\Desktop\\parmTest.s", "C:\\Users\\Lohann\\Desktop\\testResultHexa.txt")
 
 
+if __name__ == "__main__" :
+    arguments = sys.argv[1:]
 
-fullConvert("C:\\Users\\Lohann\\Desktop\\parm\\test_integration\\branch.s", "C:\\Users\\Lohann\\Desktop\\parm\\test_integration\\branch.txt")
+    if (len(arguments) == 0) :
+        raise RuntimeError("Missing filename to assemble")
 
+    input_filename: Path = Path(arguments[0])
 
+    if (not input_filename.is_file()) :
+        raise RuntimeError(f"'{input_filename.as_posix()}' isn't a file")
+
+    output_filename: Path
+
+    if (len(arguments) == 1) :
+        output_filename = input_filename.parent.joinpath(input_filename.name.split('.')[0] + ".bin")
+    else :
+        output_filename = Path(arguments[1])
+
+    fullConvert(
+        input_filename.as_posix(),
+        output_filename.as_posix(),
+    )
