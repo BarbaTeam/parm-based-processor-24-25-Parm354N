@@ -66,5 +66,5 @@ Lien vers le github de Parm354N : https://github.com/BarbaTeam/parm-based-proces
 
 Utiliser le scripts `scripts/parmesan.sh` :
 ```sh
-./scripts/parmesan.sh ./main.c ./main.bin
+./parmesan.sh ./main.c ./main.bin
 ```
