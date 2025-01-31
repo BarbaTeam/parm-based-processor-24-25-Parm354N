@@ -6,7 +6,7 @@ def file_convert(file_path):
     labelsDict = parsLabels(lines, n)
     for lineIndex in range(n): 
         if (lines[lineIndex][0] != '@' and len(lines[lineIndex][:-1]) > 0): 
-            str += (assemble_instruction(lines[lineIndex][:-1], labelsDict) + " ")
+            str += (assemble_instruction(lines, lines[lineIndex][:-1], labelsDict, lineIndex) + " ")
     return str
 
 
@@ -22,20 +22,51 @@ def isLabel(line):
     else: 
         return line[-1] == ':' or line[-2] == ':' or line[0] == '.'
         
+
+def findLabel(textLines, string, labelsDict, stringIndex, immSize): 
+    add = 2**immSize
+    counter = stringIndex - 1
+    for lineIndex in range(stringIndex, len(textLines)): 
+        counter += 1
+        if textLines[lineIndex][:-2] == string: 
+            val = counter - stringIndex - 3
+            if val < 0: 
+                val = val + add
+            return val
+        if textLines[lineIndex][:-2] in labelsDict: 
+            counter -= 1
+    counter = 0
+    for lineIndex in range(0, stringIndex): 
+        if textLines[lineIndex][:-2] == string: 
+            counter = 0
+        if textLines[lineIndex][:-2] in labelsDict: 
+            counter -= 1
+        counter += 1
+        
+    val = -1 * counter - 3 + add
+    return val
+
+
+        
+            
 def parsLabels(lineTable, length):
     labelDict = {}
+    labelsFound = 0
     for lineIndex in range(length): 
         if isLabel(lineTable[lineIndex]): 
-            labelDict[lineTable[lineIndex][:-2]] = lineIndex + 1
+            labelsFound += 1
+            labelDict[lineTable[lineIndex][:-2]] = lineIndex - labelsFound
     return labelDict 
 
-def convertLabelsToValue(labelDict, string): 
+def convertLabelsToValue(fullText, labelDict, string, stringIndex, immSize = 8): 
+    #i want to return val, such that val + 3 = labelDict[string] - lineIndex
+    #if val
     if string in labelDict: 
-        return labelDict[string]
+        return findLabel(fullText, string, labelDict, stringIndex, immSize)
     else: 
         return string
 
-def assemble_instruction(instruction, labelsDict):
+def assemble_instruction(fullText, instruction, labelsDict, lineIndex):
     # Define the instruction set and their binary opcodes
     instruction_set = {
         "lsls": ["00000", "0100000010"],
@@ -90,8 +121,11 @@ def assemble_instruction(instruction, labelsDict):
         print("yo im right here man")
     instr = str.lower(parts[0])
     operands = []
-    for i in range(1, len(parts)): 
-        operands.append(convertLabelsToValue(labelsDict, parts[i].split(',')[0]))
+    if instr in ['b', 'bal', 'bnv']: 
+        operands.append(convertLabelsToValue(fullText, labelsDict, parts[1].split(',')[0], lineIndex, 11))
+    else: 
+        for i in range(1, len(parts)): 
+            operands.append(convertLabelsToValue(fullText, labelsDict, parts[i].split(',')[0], lineIndex, 8))
 
     # Initialize the binary code
     binary_code = ''
